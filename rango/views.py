@@ -112,11 +112,11 @@ def user_login(request):
         else:
             try:
                 User.objects.get(username=username)
-                print("Invalid Password {1} for Username {0}".format(username, password))
+                print("wrongpassword: Invalid login details supplied.")
                 return HttpResponse("Invalid password supplied for that username.")
             except User.DoesNotExist:
                 print("Invalid Username: {0}".format(username))
-                return HttpResponse("That username does not exist.")
+                return HttpResponse("wronguser: Invalid login details supplied.")
     else:
         return render(request, 'rango/login.html', {})
 
